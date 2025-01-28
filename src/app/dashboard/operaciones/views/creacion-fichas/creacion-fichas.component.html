@@ -1,0 +1,792 @@
+<div class="p-12 custom-height">
+  <div class="flex justify-center items-center">
+    <ol
+      class="items-center w-full max-w-4xl space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
+    >
+      <li
+        *ngFor="let step of steps; let i = index"
+        [ngClass]="{
+          'bg-blue-500 text-white': currentStep === i + 1,
+          'text-gray-500': currentStep !== i + 1
+        }"
+        class="flex items-center space-x-2.5 rtl:space-x-reverse px-8 py-4 w-full sm:w-[300px] rounded-lg"
+      >
+        <span
+          class="flex items-center justify-center w-8 h-8 border border-white rounded-full shrink-0"
+          [ngClass]="{
+            'border-white': currentStep === i + 1,
+            'border-gray-500': currentStep !== i + 1
+          }"
+        >
+          {{ i + 1 }}
+        </span>
+        <span class="ml-2">
+          <h3 class="font-medium leading-tight">{{ step }}</h3>
+        </span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mt-5 mx-auto">
+    <ng-container>
+      <form [formGroup]="frmFicha">
+        @switch (currentStep) { @case (1) {
+        <div
+          class="w-full p-6 bg-white border-t-4 border-t-blue-500 rounded-lg shadow-2xl"
+        >
+          <h3
+            class="mb-4 text-lg font-medium leading-none text-gray-900 dark:text-white"
+          >
+            Información General
+          </h3>
+          <div class="grid gap-4 mb-4 grid-cols-3">
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nombre <span class="text-red-600">*</span></label
+              >
+              <input
+                type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ingrese el nombre"
+                required=""
+              />
+            </div>
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Entidad <span class="text-red-600">*</span></label
+              >
+              <select
+                id="default"
+                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Seleccionar</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+            </div>
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Franquicia <span class="text-red-600">*</span></label
+              >
+              <select
+                id="default"
+                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Seleccionar</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+            </div>
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Responsable <span class="text-red-600">*</span></label
+              >
+              <select
+                id="default"
+                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Seleccionar</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+            </div>
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Interés <span class="text-red-600">*</span></label
+              >
+              <select
+                id="default"
+                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Seleccionar</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="confirm-password"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Banner
+                <small class="text-gray-600"
+                  >(.jpg, 300Kb max., 1100x370)</small
+                ></label
+              >
+
+              <div class="file-upload">
+                <input
+                  type="file"
+                  id="file_input"
+                  (change)="onFileChange($event)"
+                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                />
+
+                @if(isUploading){
+                <section class="progress-area mt-5">
+                  <div
+                    class="flex items-center justify-between mb-2 bg-blue-200 p-3 rounded-lg gap-2"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex flex-col w-full">
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Cargando</span
+                        >
+                        <span class="text-sm font-medium text-gray-600"
+                          >{{ progress }}%</span
+                        >
+                      </div>
+                      <div class="w-full bg-gray-200 h-2 rounded">
+                        <div
+                          class="h-full bg-blue-500 rounded"
+                          [style.width.%]="progress"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                } @if(uploadComplete){
+                <section class="uploaded-area mt-5">
+                  <div
+                    class="flex items-center justify-between bg-blue-100 p-3 rounded-lg"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex-1 ml-3">
+                      <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Uploaded</span
+                        >
+                        <span class="text-sm font-medium text-gray-600">{{
+                          fileSize
+                        }}</span>
+                      </div>
+                    </div>
+                    <fa-icon
+                      [icon]="check"
+                      class="text-blue-500 text-2xl"
+                    ></fa-icon>
+                  </div>
+                </section>
+
+                }
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Validar Correo <span class="text-red-600">*</span></label
+              >
+
+              <ul
+                class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg sm:flex"
+              >
+                <li class="w-full sm:w-auto">
+                  <div class="flex items-center ps-3">
+                    <input
+                      id="horizontal-list-radio-license"
+                      type="radio"
+                      value="1"
+                      formControlName="validarCorreo"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                    />
+                    <label
+                      for="horizontal-list-radio-license"
+                      class="py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Sí
+                    </label>
+                  </div>
+                </li>
+                <li
+                  class="w-full sm:w-auto border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+                >
+                  <div class="flex items-center ps-3">
+                    <input
+                      id="horizontal-list-radio-id"
+                      type="radio"
+                      value="0"
+                      formControlName="validarCorreo"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    />
+                    <label
+                      for="horizontal-list-radio-id"
+                      class="py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      No
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Terminos <span class="text-red-600">*</span></label
+              >
+
+              <div class="flex items-center">
+                <input
+                  id="link-checkbox"
+                  type="checkbox"
+                  formControlName="terminos"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  for="link-checkbox"
+                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >Términos y condiciones</label
+                >
+              </div>
+            </div>
+
+            @if(onUbicacion){
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Ubicación <span class="text-red-600">*</span></label
+              >
+              <select
+                id="default"
+                formControlName="ubicacion"
+                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Seleccionar</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+            </div>
+            }
+
+
+
+          </div>
+
+          <div class="grid grid-cols-3 gap-4">
+             @if(frmFicha.get('validarCorreo')?.value==='1'){
+               <div>
+              <label
+                for="confirm-password"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Imagen para el correo
+                <small class="text-gray-600"
+                  >(.jpg, 300Kb max., 712x200)</small
+                ></label
+              >
+
+              <div class="file-upload">
+                <input
+                  type="file"
+                  id="file_input"
+                  (change)="onFileChange($event)"
+                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                />
+
+                @if(isUploading){
+                <section class="progress-area mt-5">
+                  <div
+                    class="flex items-center justify-between mb-2 bg-blue-200 p-3 rounded-lg gap-2"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex flex-col w-full">
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Cargando</span
+                        >
+                        <span class="text-sm font-medium text-gray-600"
+                          >{{ progress }}%</span
+                        >
+                      </div>
+                      <div class="w-full bg-gray-200 h-2 rounded">
+                        <div
+                          class="h-full bg-blue-500 rounded"
+                          [style.width.%]="progress"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                } @if(uploadComplete){
+                <section class="uploaded-area mt-5">
+                  <div
+                    class="flex items-center justify-between bg-blue-100 p-3 rounded-lg"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex-1 ml-3">
+                      <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Uploaded</span
+                        >
+                        <span class="text-sm font-medium text-gray-600">{{
+                          fileSize
+                        }}</span>
+                      </div>
+                    </div>
+                    <fa-icon
+                      [icon]="check"
+                      class="text-blue-500 text-2xl"
+                    ></fa-icon>
+                  </div>
+                </section>
+
+                }
+              </div>
+            </div>
+            }
+
+          </div>
+
+          @if(onUbicacion){
+          <div class="w-full mt-4">
+            <quill-editor
+              [style]="{ height: '200px', width: '100%' }"
+            ></quill-editor>
+          </div>
+          }
+        </div>
+
+        } @case (2) {
+
+        <div
+          class="w-full p-6 bg-white border-t-4 border-t-blue-500 rounded-lg shadow-2xl"
+        >
+          <form [formGroup]="frmFichaDinamico">
+            <div class="grid grid-cols-3 gap-4">
+
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Tipo Plantilla<span class="text-red-600">*</span></label
+                >
+                <select
+                (change)="cambiarPlantilla()"
+                  formControlName="tipo_plantilla"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected value="null" disabled>Seleccionar</option>
+                  <option value="0">Cursos Abiertos</option>
+                  <option value="1">Cursos Cerrados</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Campo<span class="text-red-600">*</span></label
+                >
+                <select
+                  formControlName="campo"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected value="null" disabled>Seleccionar</option>
+                  <option value="0">Input</option>
+                  <option value="1">Select</option>
+                  <option value="2">Tabla</option>
+                  <option value="3">Botón</option>
+                </select>
+              </div>
+              <div class="py-7">
+                <button
+                  class="bg-green-500 text-white px-4 py-2 rounded-lg disabled:bg-gray-400"
+                  (click)="agregarFormulario()"
+                >
+                  Agregar
+                </button>
+              </div>
+
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Idioma<span class="text-red-600">*</span></label
+                >
+                <select
+                  id="default"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected>Seleccionar</option>
+                  <option value="0">Español</option>
+                  <option value="1">Inglés</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Requerido<span class="text-red-600">*</span></label
+                >
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected>Seleccionar</option>
+                  <option value="0">SI</option>
+                  <option value="1">No</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div
+          class="w-full p-6 bg-white border-t-4 border-t-blue-500 rounded-lg shadow-2xl"
+        >
+          <h3
+            class="mb-4 text-lg font-medium leading-none text-gray-900 dark:text-white"
+          >
+            Datos del Participante
+          </h3>
+
+          <form [formGroup]="DatosParticipantes">
+            <!-- <div class="grid gap-4 mb-4 grid-cols-7">
+              <div
+                [ngClass]="'col-span-' + elem.anchoSeleccionado"
+                *ngFor="
+                  let elem of formElements;
+                  let i = index;
+                  trackBy: trackByFn
+                "
+              >
+                <div *ngIf="elem.campoSeleccionado === '0'">
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Input:
+                    <fa-icon
+                      [icon]="trash"
+                      class="cursor-pointer text-red-500"
+                      (click)="remove(i)"
+                    ></fa-icon>
+                  </label>
+                  <input
+                    [formControlName]="elem.formControlName"
+                    class="w-full p-2 border border-gray-300"
+                  />
+                </div>
+
+                <div *ngIf="elem.campoSeleccionado === '1'">
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Select:
+                    <fa-icon
+                      [icon]="trash"
+                      class="cursor-pointer text-red-500"
+                      (click)="remove(i)"
+                    ></fa-icon>
+                  </label>
+                  <select
+                    [formControlName]="elem.formControlName"
+                    class="w-full p-2 border border-gray-300"
+                  >
+                    <option value="Opción 1">Opción 1</option>
+                    <option value="Opción 2">Opción 2</option>
+                    <option value="Opción 3">Opción 3</option>
+                  </select>
+                </div>
+
+                <div *ngIf="elem.campoSeleccionado === '2'">
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Tabla:
+                    <fa-icon
+                      [icon]="trash"
+                      class="cursor-pointer text-red-500"
+                      (click)="remove(i)"
+                    ></fa-icon>
+                  </label>
+                  <table class="w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th class="border">Columna 1</th>
+                        <th class="border">Columna 2</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border">Dato 1</td>
+                        <td class="border">Dato 2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div *ngIf="elem.campoSeleccionado === '3'">
+                  <button class="w-full bg-blue-500 text-white p-2 rounded">
+                    Botón
+                  </button>
+                </div>
+              </div>
+            </div> -->
+
+          <div *ngIf="tipoPlantilla?.value === '0'">
+
+            <app-cursos-abiertos></app-cursos-abiertos>
+
+          </div>
+
+          <div *ngIf="tipoPlantilla?.value === '1'">
+
+            <app-cursos-cerrados></app-cursos-cerrados>
+
+          </div>
+
+          </form>
+        </div>
+
+        } @case (3) {
+        <div
+          class="w-full p-6 bg-white border-t-4 border-t-blue-500 rounded-lg shadow-2xl"
+        >
+          <h3
+            class="mb-4 text-lg font-medium leading-none text-gray-900 dark:text-white"
+          >
+            Configurar correo de respuesta
+          </h3>
+
+          <form [formGroup]="frmEmailConfig">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Correo de origen<span class="text-red-600">*</span></label
+                >
+                <select
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected>Seleccionar</option>
+                  <option value="0">SI</option>
+                  <option value="1">No</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Imagen para el correo <small>(.jpg, 300Kb max., 712x200)</small><span class="text-red-600">*</span></label
+                >
+                <div class="file-upload">
+                <input
+                  type="file"
+                  id="file_input"
+                  (change)="onFileChange($event)"
+                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                />
+
+                @if(isUploading){
+                <section class="progress-area mt-5">
+                  <div
+                    class="flex items-center justify-between mb-2 bg-blue-200 p-3 rounded-lg gap-2"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex flex-col w-full">
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Cargando</span
+                        >
+                        <span class="text-sm font-medium text-gray-600"
+                          >{{ progress }}%</span
+                        >
+                      </div>
+                      <div class="w-full bg-gray-200 h-2 rounded">
+                        <div
+                          class="h-full bg-blue-500 rounded"
+                          [style.width.%]="progress"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                } @if(uploadComplete){
+                <section class="uploaded-area mt-5">
+                  <div
+                    class="flex items-center justify-between bg-blue-100 p-3 rounded-lg"
+                  >
+                    <fa-icon
+                      [icon]="file"
+                      class="text-blue-500 text-3xl"
+                    ></fa-icon>
+                    <div class="flex-1 ml-3">
+                      <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-700"
+                          >{{ fileName }} • Uploaded</span
+                        >
+                        <span class="text-sm font-medium text-gray-600">{{
+                          fileSize
+                        }}</span>
+                      </div>
+                    </div>
+                    <fa-icon
+                      [icon]="check"
+                      class="text-blue-500 text-2xl"
+                    ></fa-icon>
+                  </div>
+                </section>
+
+                }
+              </div>
+              </div>
+               <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Asunto correo<span class="text-red-600">*</span></label
+                >
+                <input
+                type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ingrese el nombre"
+                required=""
+              />
+              </div>
+              <div class="py-7">
+                <button
+                  class="bg-green-500 text-white px-4 py-2 rounded-lg"
+
+                >
+                  Generar Link
+                </button>
+              </div>
+
+
+            </div>
+
+            <div class="w-full">
+               <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Mensaje de confirmación<span class="text-red-600">*</span></label
+                >
+               <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mt-4">
+
+              <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Redireccionar<span class="text-red-600">*</span></label
+              >
+
+              <ul
+                class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg sm:flex"
+              >
+                <li class="w-full sm:w-auto">
+                  <div class="flex items-center ps-3">
+                    <input
+                      id="horizontal-list-radio-license"
+                      type="radio"
+                      value=""
+                      name="list-radio"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                    />
+                    <label
+                      for="horizontal-list-radio-license"
+                      class="py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Sí
+                    </label>
+                  </div>
+                </li>
+                <li
+                  class="w-full sm:w-auto border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+                >
+                  <div class="flex items-center ps-3">
+                    <input
+                      id="horizontal-list-radio-id"
+                      type="radio"
+                      value=""
+                      name="list-radio"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    />
+                    <label
+                      for="horizontal-list-radio-id"
+                      class="py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      No
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Link<span class="text-red-600">*</span></label
+                >
+                <input
+                type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ingrese el nombre"
+                required=""
+              />
+              </div>
+            </div>
+
+
+
+              <div class="mt-4">
+            <quill-editor
+              [style]="{ height: '200px', width: '100%' }"
+            ></quill-editor>
+          </div>
+          </form>
+        </div>
+        } }
+      </form>
+    </ng-container>
+
+    <div class="p-5">
+      @if(currentStep>1){
+      <button
+        (click)="changeStep(currentStep - 1)"
+        class="bg-gray-500 text-white px-4 py-2 rounded-lg mr-2"
+      >
+        Anterior
+      </button>
+      } @if(currentStep<=3){
+      <button
+        (click)="changeStep(currentStep + 1)"
+        class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+      >
+        {{ currentStep === 3 ? "Finalizar" : "Siguiente" }}
+      </button>
+      }
+    </div>
+  </div>
+</div>

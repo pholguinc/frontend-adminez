@@ -4,6 +4,20 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@services/*": [
+        "./src/app/core/services/*"
+      ],
+      "@shared/*": [
+        "./src/app/shared/*"
+      ],
+      "@core/*": [
+        "./src/app/core/*"
+      ],
+      "@environments/*": [
+        "./src/environments/*"
+      ],
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

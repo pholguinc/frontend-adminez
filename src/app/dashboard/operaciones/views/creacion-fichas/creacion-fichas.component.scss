@@ -1,0 +1,68 @@
+.progress-area {
+  .row .content {
+    width: 100%;
+    margin-left: 15px;
+  }
+
+  .details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    justify-content: space-between;
+  }
+
+  .content .progress-bar {
+    height: 6px;
+    width: 100%;
+    margin-bottom: 4px;
+    background: #fff;
+    border-radius: 30px;
+  }
+}
+
+.content .progress-bar .progress {
+  height: 100%;
+  width: 0%;
+  background: #6990F2;
+  border-radius: inherit;
+}
+
+.uploaded-area {
+  max-height: 232px;
+  overflow-y: scroll;
+
+  &.onprogress {
+    max-height: 150px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .row {
+    .content {
+      display: flex;
+      align-items: center;
+    }
+
+    .details {
+      display: flex;
+      margin-left: 15px;
+      flex-direction: column;
+
+      .size {
+        color: #404040;
+        font-size: 11px;
+      }
+    }
+  }
+
+  i.fa-check {
+    font-size: 16px;
+  }
+}
+
+
+.custom-height {
+    height: calc(100vh - 70px);
+}
