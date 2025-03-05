@@ -22,4 +22,9 @@ export const routes: Routes = [
       },
     ],
   },
+  //Rutas Publicas
+  {
+    path: 'pagos',
+    loadComponent: () => import('./public/pagos/pagos.component')
+  },
 ];
